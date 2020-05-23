@@ -1,0 +1,38 @@
+{% extends 'college/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .table_images{
+        width: 100px ; height:100px;
+      }
+    </style>
+  </head>
+  <body>
+    {% block content %}
+    <div class="container">
+      <br>
+      <h2>Student data</h2>
+      <table class="table table-striped table-hover table-dark">
+        <th>NAME</th>
+        <th>COLLEGE</th>
+        <th>BRANCH</th>
+        <th>SEMESTER</th>
+        <th>IMAGE</th>
+        {% for i in S %}
+        <tr>
+          <td>{{i.name}}</td>
+          <td>{{i.college}}</td>
+          <td>{{i.branch}}</td>
+          <td>{{i.semester}}</td>
+          <td> <img class="table_images" src="{{i.student_image.url}}" alt="not found"> </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% endblock %}
+  </body>
+</html>

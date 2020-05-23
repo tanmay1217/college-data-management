@@ -1,0 +1,44 @@
+{% extends 'college/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>College</title>
+  </head>
+  <style media="screen">
+    .table_images{
+      width: 100px ; height:100px;
+    }
+  </style>
+  <body>
+    {% block content %}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2>College details</h2>
+        </div>
+        <div class="col">
+          <a class="btn btn-primary "href="{% url 'addcollege' %}">Add College</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <table class="table table-striped table-hover table-dark">
+      <th>IMAGE</th>
+      <th>NAME</th>
+      <th>PRINCIPAL</th>
+      <th>LOCATION</th>
+      {% for i in C %}
+      <tr>
+        <td> <a href="{% url 'college_student' i.id %}"> <img class ='table_images' src="{{i.college_image.url}}" alt="not found"> </a> </td>
+        <td>{{i.name}}</td>
+        <td>{{i.principal}}</td>
+        <td>{{i.location}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    </div>
+    {% endblock %}
+  </body>
+</html>

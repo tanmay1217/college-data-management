@@ -1,0 +1,23 @@
+{% extends 'college/base.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% block content %}
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <form action="{% url 'addstudent' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" name="submit" value="submit">
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+  </body>
+</html>
